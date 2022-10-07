@@ -29,15 +29,9 @@
   </div>
   <div class="w3-cell w3-container">
     <h3>Radio Station Science and Technology</h3>
-<script>
-   // el array de los videos
-<source src="" type="video/mp4">
-<source src="" type="video/mp4">
- <source src="" type="video/mp4">
-<source src="" type="video/mp4">
- <source src="" type="video/mp4">
-<source src="" type="video/mp4">  
-let vids = ["https://ia601208.us.archive.org/20/items/Michael_Jackson_Beat_It/Michael%20Jackson_Beat%20It.mp4","https://ia601209.us.archive.org/17/items/Jimi_Hendrix_Hey_Joe_/Jimi%20Hendrix_Hey%20Joe%20.ogv","https://ia601205.us.archive.org/4/items/Gotye_Somebody_That_I_Used_To_Know_/Gotye_Somebody%20That%20I%20Used%20To%20Know%20.ogv","https://ia601200.us.archive.org/14/items/Van_Halen_Jump/Van_Halen_Jump.ogv",https://www.w3schools.com/html/mov_bbb.mp4","https://ia801204.us.archive.org/27/items/Jefferson_Airplane_White_Rabbit_/Jefferson%20Airplane_White%20Rabbit%20.ogv"]
+<script type="text/javascript">
+     // el array de los videos
+let vids = ["https://s3-us-west-2.amazonaws.com/s.cdpn.io/605876/video-player-video.mp4","https://www.w3schools.com/html/mov_bbb.mp4"]
 // la longitud del array de los videos
 let leng = vids.length;
 // un numero utilizado para saber que video se está reproduciendo
@@ -50,16 +44,11 @@ vid.setAttribute("src", vids[n%leng]);
 n++;
 }
 )
-   
-   
-   
+     
      </script>
-   <video id="vid" preload="true" autoplay="true" controls width="300" height="300">
-  <source src="https://ia801208.us.archive.org/20/items/Michael_Jackson_Beat_It/Michael%20Jackson_Beat%20It.ogv" type="video/ogg">
-
-        Your browser does not support the video tag.
+     <video id="vid" preload="true" autoplay="true" muted="muted" volume="0" controls width="300" height="168">
+ <source src="https://www.w3schools.com/html/mov_bbb.mp4"  type="video/mp4">
 </video>
-  
   
   </div>
 </div>
