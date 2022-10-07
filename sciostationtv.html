@@ -29,7 +29,25 @@
   </div>
   <div class="w3-cell w3-container">
     <h3>Radio Station Science and Technology</h3>
+<script>
+   // el array de los videos
+let vids = ["https://ia601208.us.archive.org/20/items/Michael_Jackson_Beat_It/Michael%20Jackson_Beat%20It.mp4","https://www.w3schools.com/html/mov_bbb.mp4"]
+// la longitud del array de los videos
+let leng = vids.length;
+// un numero utilizado para saber que video se está reproduciendo
+let n = 0;
+// utilizo el evento "ended" para saber si el video se ha acabado
+vid.addEventListener("ended",()=>{
+// si el video se ha acabado cambia el atributo src
+vid.setAttribute("src", vids[n%leng]);
 
+n++;
+}
+)
+   
+   
+   
+     </script>
      <video width="320" height="240" autoplay>
   <source src="https://ia601208.us.archive.org/20/items/Michael_Jackson_Beat_It/Michael%20Jackson_Beat%20It.mp4" type="video/mp4">
   <source src="https://ia801208.us.archive.org/20/items/Michael_Jackson_Beat_It/Michael%20Jackson_Beat%20It.ogv" type="video/ogg">
