@@ -1,0 +1,250 @@
+<html lang="en">
+<head>
+  <title>Radio Station Natio </title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+    /* Set height of the grid so .sidenav can be 100% (adjust if needed) */
+    .row.content {height: 1500px}
+    
+    /* Set gray background color and 100% height */
+    .sidenav {
+      background-color: #f1f1f1;
+      height: 100%;
+    }
+    
+    /* Set black background color, white text and some padding */
+    footer {
+      background-color: #555;
+      color: white;
+      padding: 15px;
+    }
+    
+    /* On small screens, set height to 'auto' for sidenav and grid */
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 15px;
+      }
+      .row.content {height: auto;} 
+    }
+  </style>
+</head>
+<body>
+
+<div class="container-fluid">
+  <div class="row content">
+    <div class="col-sm-3 sidenav">
+      <h4>Radio Natio Station</h4>
+      
+      <ul class="nav nav-pills nav-stacked">
+        <li class="active"><a href="index.html">Home</a></li>
+        <li><a href="natiotv.html">Natio Station Tv</a></li>
+        <li><a href="radio.html">Radio Natio Github</a></li>
+      </ul><br>
+      <div class="input-group">
+      
+      </div>
+    </div>
+
+    <div class="col-sm-9">
+      <h4><small>RECENT POSTS</small></h4>
+      <hr>
+      <h2>Radio Natio Station </h2><br>
+      <div class="media-left">
+      <img src="https://natio.neocities.org/station/images/station.png" class="img-circle" alt="Natio Station "></div>
+      <h5><span class="glyphicon glyphicon-time"></span> Post by Jane Dane, Sep 27, 2015.</h5>
+      <h5><span class="label label-danger">Natio</span> <span class="label label-primary">Radio Natio Station </span></h5><br>
+      <p>Natio Station, con programación cultural, músical y de actualidad..</p>
+      
+
+      <br>
+       <br>
+     <p>Copia esta direccion y pegala en vlc segun el video</p>
+     <p>medios>abrir ubicacion red> pegar el url >reproducir</p>
+      <textarea id="textArea" lass="form-control">https://bit.ly/3g0nl5p</textarea>
+    <br>
+     <button onclick="copyToClipBoard()" class="btn btn-success">Copy</button>
+
+    <script src="js/copy.js"></script>
+      
+      <br>
+      
+      <h4><small>RECENT POSTS</small></h4>
+      <hr>
+      <h2>Radio Natio Station</h2>
+      <h5><span class="glyphicon glyphicon-time"></span> Post by John Doe, Sep 24, 2015.</h5>
+      <h5><span class="label label-success">Radio</span></h5><br>
+      <p>.</p>
+     <audio id="audio" preload="auto" tabindex="0" controls="" >
+  <source src="https://ia801506.us.archive.org/19/items/natiomus/natiomus.mp3">
+</audio>
+
+    <ul id="playlist">
+        <li class="active">
+           <a href="https://ia801506.us.archive.org/19/items/natiomus/natiomus.mp3">
+            Radio Natio
+           </a>
+        </li>
+        <li>
+            <a href="https://ia800306.us.archive.org/34/items/LaOtraOrejaSubversiva/La_Otra_Oreja_Subversiva.mp3">
+                programa - la otro oreja subversiva
+            </a>
+        </li>
+        <li>
+            <a href="https://ia801506.us.archive.org/19/items/natiomus/natiomus.mp3">
+               Radio natio
+            </a>
+        </li>
+        <li>
+            <a href="https://ia601807.us.archive.org/4/items/plan-ideal-11h-00-programa-20-02-2021/Plan%20Ideal%2011h00%20Programa%2020%2002%202021.mp3">
+                programa - plan ideal
+            </a>
+        </li>
+        <li>
+            <a href="https://ia801506.us.archive.org/19/items/natiomus/natiomus.mp3">
+               Radio natio
+            </a>
+        </li>
+        <li>
+            <a href="https://ia902205.us.archive.org/31/items/RADIOBABYLONIA_201405/RADIO%20BABYLONIA.mp3">
+               Radio Babylonia
+            </a>
+        </li>
+        <li>
+            <a href="https://ia801506.us.archive.org/19/items/natiomus/natiomus.mp3">
+                Radio Natio
+            </a>
+        </li>
+         <li>
+            <a href="https://ia802607.us.archive.org/2/items/PgmLn22-04-09/Laguna22DeAbril.mp3">
+                programa - la laguna
+            </a>
+        </li>
+        <li>
+            <a href="https://ia801506.us.archive.org/19/items/natiomus/natiomus.mp3">
+                Radio Natio
+            </a>
+        </li>
+        <li>
+            <a href="https://ia800900.us.archive.org/27/items/PgmLatinoamericaVive12-01-09/Pgm12-01-09LatinoamericaVive.mp3">
+                programa -latino america vive
+            </a>
+        </li>
+        <li>
+            <a href="https://ia801506.us.archive.org/19/items/natiomus/natiomus.mp3">
+                Radio Natio
+            </a>
+        </li>
+        <li>
+            <a href="https://ia801308.us.archive.org/20/items/MusicaVariada_201510/MusicaVariada.mp3">
+              musica variada
+            </a>
+        </li>
+    </ul>
+    <script>
+  init();
+
+function init(){
+    var audio = document.getElementById('audio');
+    var playlist = document.getElementById('playlist');
+    var tracks = playlist.getElementsByTagName('a');
+    audio.volume = 0.80;
+    audio.play();
+    
+    //Agregamos los eventos a los links que nos permitirán cambiar de canción
+    for(var track in tracks) {
+      var link = tracks[track];
+      if(typeof link === "function" || typeof link === "number") continue;
+      link.addEventListener('click', function(e) {
+      	e.preventDefault();
+        var song = this.getAttribute('href');
+       	run(song, audio, this);
+      });
+    }
+    //agregamos evento para reproducir la siguiente canción en la lista
+    //si la canción es la ultima reproducir la primera otra vez
+    audio.addEventListener('ended',function(e) {
+        for(var track in tracks) {
+          var link = tracks[track];
+          var nextTrack = parseInt(track) + 1;
+          if(typeof link === "function" || typeof link === "number") continue;
+          if(!this.src) this.src = tracks[0];
+          if(track == (tracks.length - 1)) nextTrack = 0;
+                                	console.log(nextTrack);
+        	if(link.getAttribute('href') === this.src) {
+          	var nextLink = tracks[nextTrack];
+          	run(nextLink.getAttribute('href'), audio, nextLink);
+            break;
+          }
+        }
+    });
+}
+
+function run(song, audio, link){
+        var parent = link.parentElement;
+        //quitar el active de todos los elementos de la lista
+        var items = parent.parentElement.getElementsByTagName('li');
+        for(var item in items) {
+          if(items[item].classList)
+            items[item].classList.remove("active");
+        }
+        
+        //agregar active a este elemento
+        parent.classList.add("active");
+        
+        //tocar la cancion
+        audio.src = song;
+        audio.load();
+        audio.play();
+}
+</script>
+      <hr>
+
+      <h4>Leave a Comment:</h4>
+      
+      <br><br>
+      
+      <p><span class="badge">2</span> Comments:</p><br>
+      
+      <div class="row">
+        <div class="col-sm-2 text-center">
+          <img src="https://natio.neocities.org/station/images/station.png" class="img-circle" height="65" width="65" alt="Avatar">
+        </div>
+        <div class="col-sm-10">
+          <h4>Natio Station <small>Sep 29, 2022, 9:12 PM</small></h4>
+          <p>Radio Natio station con programación , cultural musical y de actualidad.</p>
+          <br>
+        </div>
+        <div class="col-sm-2 text-center">
+          <img src="https://natio.neocities.org/station/images/stationnation.png" class="img-circle" height="65" width="65" alt="Avatar">
+        </div>
+        <div class="col-sm-10">
+          <h4>Natio Station Tv <small>Sep 25, 2015, 8:25 PM</small></h4>
+          <p>Natio Station Tv,con programación para todas las edades y contenidos , documentales peliculas y programas culturales </p>
+          <br>
+          <p><span class="badge">1</span> Comment:</p><br>
+          <div class="row">
+            <div class="col-sm-2 text-center">
+             
+            </div>
+            <div class="col-xs-10">
+              
+              <br>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="container-fluid">
+  <p>Radio Natio Station</p>
+</footer>
+
+</body>
+</html>
