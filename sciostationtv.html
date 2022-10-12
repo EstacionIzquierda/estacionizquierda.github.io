@@ -39,11 +39,354 @@ content="https://natio.neocities.org/radio/images/ScioStationTv.png" />
   </div>
   <div class="w3-cell w3-container">
     <h3>Station Science and Technology</h3>
-<video width="320" height="240" controls>
-  <source src="https://archive.org/download/rymt02xe01/RyM_T01xE01.mp4" type="video/mp4">
-  <source src="https://ia804606.us.archive.org/13/items/genesis.-ii.-1973-vose/Genesis.II.1973%20vose.ia.mp4" type="video/ogg">
-Your browser does not support the video tag.
-</video>
+<div style="margin:auto; width:500px;">
+	<div id="mi_video_player" style="clear:both; width:500px; height:281px; margin:0px; padding:0px;border:0px;"></div>
+	<!-- 
+	creamos un div para mostrar el reproductor de youtube 
+	lo bautizamos con id="mi_video_player"
+	definimos sus ancho y alto con width:500px; height:281px;
+	-->
+	
+	<div style="margin:0px; padding:0px;border:0px;">
+
+		<strong>Titulo: </strong> <span id="cancion"></span>
+  	<strong>Interprete:</strong> <span id="autor"></span><br>
+	<!-- 
+	creamos dos span vacÃ­os para mostrar el intÃ©rpete y nombre de la canciÃ³n 
+	-->
+
+	</div>
+</div>
+
+    <script>
+
+
+var video_a_mostar = 0;
+// variable para almacenar el video a mostrar
+
+var situacion_del_video;
+// variable para almacenar la situacion del video
+// la situacion del video la proporciona la api de youtube
+// los valores posibles son:
+// 0 el video ha terminado
+// 1 el video se esta reproduciendo
+// 2 el video esta pausado
+// 3 el video esta almacenandose localmente
+// 4 el video esta listo para reproducirse
+// -1 el video no ha iniciado
+	
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *}
+//  creamos un array multidimensional con la playlist de los videos a reproducir
+// cada elemnto del array tiene:
+// ["interperete","nombre de la cancion","youtube video id"],
+// Ejemplo:
+// ["Amy Winehouse ","You Know I am No Good ","b-I2s5zRbHg"],
+// El youtube video id se extrae de la url del video
+// Ejemplo de url del video:
+// https://www.youtube.com/watch?v=b-I2s5zRbHg
+// el valor del parametro v es el youtube video id
+// En este caso: b-I2s5zRbHg
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *}
+
+
+
+	var playlist = 
+	[
+["Alphaville","Big in Japan","DdWZKb659K0"],
+["Alphaville"," Dance with me","kW-m7kIrVGs"],
+["Alphaville","Forever Young ","V_v1gSg-VW0"],
+["Eurythmics","Sweet Dream","qeMFqkcPYcg"],	
+["When In Rome","The Promise ","5HI_xFQWiYU"],
+["a-ha","Take On Me","djV11Xbc914"],
+[" Depeche Mode","Precious","5hPCzFUmeas"],
+["Tears For Fears","Everybody Wants To Rule The World","aGCdLKXNF3w"],	 
+["Tears For Fears","Shout","Ye7FKc1JQe4"],	
+["Tears For Fears","Head Over Heels ","CsHiG-43Fzg"],
+["Tears For Fears","Sowing The Seeds Of Love","VAtGOESO7W8"],
+["Tears For Fears","Break It Down Again","x1100QINlo4"],
+["Tears For Fears"," Mad World ","u1ZvPSpLxCg"],
+["Sandra Cretu"," In The Heat Of The Night ","IzQSiqAqS-M"],
+["Martika","Toy Soldiers ","LvdLovAaYzM"],
+["Sandra Cretu","maria magdalena","yUc5TvYynAs"],
+["Yazoo","Don't Go","_sQGwDeambg"],
+["Yazoo","Situation","MUijJbEyMiI"],
+["Erasure"," A Little Respect","x34icYC8zA0"],
+["Erasure","Love To Hate You","ygLy02y7_n8"],
+["Erasure","Sometimes ","S1a8QABKNo0"],
+["Erasure","Chains of Love","6J2OlIpQgF8"],
+["When in Rome","Heaven Knows","2SbXEClpDcw"],
+["The Human League","Don't You Want Me ","uPudE8nDog0"],
+["The Human League","Fascination","QqqBs6kkzHE"],
+["The Human League","Human","s1ysoohV_zA"],
+["Visage","Fade To Grey","UMPC8QJF6sI"],
+["When In Rome ","The Promise","5HI_xFQWiYU"],
+["Faith No More","EASY","vPzDTfIb0DU"],
+["Faith no more","EPIC","ZG_k5CSYKhg"],
+["Depeche Mode","Policy Of Truth","M2VBmHOYpV8"],
+["Depeche Mode","Enjoy The Silence","aGSKrC7dGcY"],
+["Depeche Mode","Personal Jesus","u1xrNaTO1bI"],	
+["Depeche Mode","Strangelove ","JIrm0dHbCDU"]
+["Depeche Mode","Just Can't Get Enough","ON8bfyAwL_8"],
+["The Outfield","for you love ","OP0bnO25ALg"],
+["Erasure ","A Little Respect ","pn_59fAbCZw"],
+["Erasure "," Lay All Your Love On Me ","x34icYC8zA0"],
+["Erasure ","Chains of Love  ","6J2OlIpQgF8"],
+["Erasure ","Sometimes ","S1a8QABKNo0"],
+["Erasure ","Take a Chance on Me ","L-d4J3YUQmU"],
+["Erasure ","Sometimes ","S1a8QABKNo0"],
+["Depeche Mode","Preciosa","8yn3ViE6mhY"],
+["When In Rome ","The Promise","5HI_xFQWiYU"],
+["Faith No More","EASY","vPzDTfIb0DU"],
+["Faith no more","EPIC","ZG_k5CSYKhg"],
+["Depeche Mode","Policy Of Truth","M2VBmHOYpV8"],
+["Depeche Mode","Enjoy The Silence","aGSKrC7dGcY"],
+["Depeche Mode","Personal Jesus","u1xrNaTO1bI"],	
+["Depeche Mode","Strangelove ","JIrm0dHbCDU"]
+["Depeche Mode","Just Can't Get Enough","ON8bfyAwL_8"],
+["The Outfield","for you love ","OP0bnO25ALg"],
+["Erasure ","A Little Respect ","pn_59fAbCZw"],
+["Erasure "," Lay All Your Love On Me ","x34icYC8zA0"],
+["Erasure ","Chains of Love  ","6J2OlIpQgF8"],
+["Erasure ","Sometimes ","S1a8QABKNo0"],
+["Erasure ","Take a Chance on Me ","L-d4J3YUQmU"],
+["Erasure ","Sometimes ","S1a8QABKNo0"],
+
+
+	
+];
+
+
+var total_videos = playlist.length - 1;
+//variable para almacenar cuantos videos tieene la playlist
+
+var player;
+// crea el player para los videos			
+
+	
+window.onYouTubeIframeAPIReady = function()
+// la api de youtube tiene sus propiedades, metodos y eventos propios
+// onYouTubeIframeAPIReady es un evento de la api de yoube
+// window.onYouTubeIframeAPIReady cuando la api de youtube estÃ© lista...
+{
+
+
+	player = new YT.Player('mi_video_player', 
+	// creamos un nuevo reproductor
+	// el video se mostrarÃ¡ en el div llamado'mi_video_player
+	{
+	
+		width: '500',
+		// el reproductor tendra un ancho de 500 pixeles
+		height: '281',
+		// el reproductor tendra un ancho de 281 pixeles
+							
+		playerVars: { 'autoplay': 1, 'controls': 0, 'disablekb':0, 'enablejsapi':1, 'iv_load_policy':3, 'rel':0, 'showinfo':0 },
+		// pasamos variables al reproductor 
+		// 'autoplay': 1 inicia la reproducciÃ²n del video automaticamente
+		// 'controls': 0 no muestra los controles del video (pausa, stop, next, volumen)
+		//  'disablekb':0  desactiva el teclado de la computadora para controlar el video
+		//  'enablejsapi':1  permite controlar el reproductor con javascript
+		//  'iv_load_policy':3 desactiva las horrendas video anotaciones
+		//  'rel':0 no muestra videos relacionados
+		// 'showinfo':0  oculta la informacion del video (titulo y autor)
+
+		
+		events: 
+		// creamos eventos para nuestro reproductor de videos
+		{
+			'onReady': el_reproductor_esta_listo,
+			// cuando el reproductor este listo, ejecutaremos la funcion el_reproductor_esta_listo
+
+			'onStateChange': el_reproductor_cambio_de_estado
+			// cuando el video cambie de estado, ejecutaremos la funcion el_reproductor_cambio_de_estado
+		}
+	});
+
+}
+
+
+function el_reproductor_esta_listo(event) 
+// definimos la funcion  el_reproductor_esta_listo
+// esta funcion se ejecutara cuando el reproductor este listo
+// event es una variable que pasa automaticamente la API de youtube
+{
+					
+	next();
+	// ejecutar la funcion next()
+
+}
+
+
+
+function el_reproductor_cambio_de_estado(event) 
+// definimos la funcion  el_reproductor_cambio_de_estado
+// esta funcion se ejecutara cuando el video cambie de estado
+// event es una variable que pasa automaticamente la API de youtube
+{
+
+	situacion_del_video =  event.data;
+	// cuando el video cambie de estado
+	// modificamos el valor de la variable situacion_del_video
+	
+	if (event.data == 0) 
+	// si el video termino de reproducirse
+	{
+		next();
+		// ejecutar la funcion next()
+		// mostraremos otro video con la funcion next()
+
+	}
+
+	if (event.data == -1) 
+	// si el video no ha iniciado
+	// todos los videos presentan la situaciÃ³n no iniciado
+	// algunos videos no habrÃ¡n iniciado, pero comenzarÃ¡n a transmitir datos
+	// algunos videos nunca iniciarÃ¡n
+	// si el video fue borrrado, nunca iniciarÃ¡
+	// si el video no  puede insertarse en el reproductor,  nunca iniciarÃ¡
+	// para evitar que el reproductor colapse por que el video fue borrado
+	// o por que se impide su reproducciÃ³n fuera de youtube
+	// creamos una funcion
+	{
+
+		timeout_mostrar_video = window.setTimeout(kill_timeout_video, 3000); 
+		// creamos una cuenta regresiva
+		// al finalizar la cuenta regresiva se ejecutarÃ¡ la funciÃ³n kill_timeout_video
+		// en 3 segundos se ejecutara la funcion kill_timeout_video
+
+	}
+	
+}
+		
+
+function kill_timeout_video() 
+// tras ejecutar una cuenta regresiva 
+// ejecutaremos la funcion kill_timeout_video() 
+	{
+
+		window.clearTimeout(timeout_mostrar_video);
+		// destruye la cuenta regresiva
+	
+		if(situacion_del_video == -1)
+		// si la situacion del video sigue siendo -1 tras  3 segundos...
+		// si el video no ha iniciado tras tres segundos...
+		// mostraremos otro video con la funcion next()
+		{
+		
+			next();
+			// ejecutar la funcion next()
+		
+		}
+
+	}
+
+	function next()
+	// creamos la funcion next
+	{
+		
+		reproducir();
+		// next ejecuta la funciÃ³n reproducir();
+	
+	}
+	
+
+	
+	function reproducir() 
+	// creamos la funciÃ³n  reproducir() 
+	{ 
+	
+		
+		video_a_mostrar_src = playlist[video_a_mostar][2];
+		// recuperarmo el yotube video id de nuestro array multidimensional
+		// video_a_mostrar_src almacenarÃ¡ el elemento 2 del  array que almacena los datos del video
+		// en este caso el elemento 2 es el youtube video id
+		// video_a_mostar  se refiere al elemento dentro del array que almacena la playlist
+		// video_a_mostar tiene un valor de 0 al inicio 
+		//  empezaremos con el elemento 0, el primero en el array que almacena la playlist
+		
+
+		document.getElementById('autor').innerHTML = playlist[video_a_mostar][0];
+		// de manera dinamica mostraremos el autor del video
+		// el autor del video lo mostrarmos en el span llamado autor 
+		// accedemos a los elementos del array multidimensional
+		// recuperamos el elemento 0 del  array que almacena los datos del video
+		// en este caso el autor
+		// video_a_mostar  se refiere al elemento dentro del array que almacena la playlist
+		// video_a_mostar tiene un valor de 0 al inicio 
+		//  empezaremos con el elemento 0, el primero en el array que almacena la playlist
+
+
+
+		document.getElementById('cancion').innerHTML = playlist[video_a_mostar][1];
+		// de manera dinamica mostraremos el titulo del video
+		// el titulo del video lo mostrarmos en el span llamado cancion 
+		// accedemos a los elementos del array multidimensional
+		// recuperamos el elemento 1 del  array que almacena los datos del video
+		// en este caso el titulo del video
+		// video_a_mostar  se refiere al elemento dentro del array que almacena la playlist
+		// video_a_mostar tiene un valor de 0 al inicio 
+		//  empezaremos con el elemento 0, el primero en el array que almacena la playlist
+
+
+
+		mostrar_video(video_a_mostrar_src);
+		//ejecutamos la funciÃ³n mostrar_video con la variable video_a_mostrar_src
+		// video_a_mostrar_src almacena el yotube video id
+	
+		if(video_a_mostar < total_videos)
+		// verificamos que el video a mostrar no sea el ultimo de la playlist
+		// verificamos que el video a mostrar no este al final del array
+		{
+			video_a_mostar += 1;
+			// si no es el ultimo, el siguiente serÃ¡ el siguiente en la lista
+		}
+		else
+		{
+			video_a_mostar = 0;
+			// si es el ultimo video
+			// comenzaremos a mostrar videos nuevamente
+			// desde el principio
+		}
+	
+	}
+
+
+
+	
+	function mostrar_video(url)
+	// funcion para mostar el video
+	{
+	
+		
+		 player.loadVideoById({videoId:url,suggestedQuality:"small"});
+		// cargar video en baja resolucion
+		// loadVideoById() es un metodo de la apideyoube
+		// videoId: es el youtube video id
+		// suggestedQuality: define la calidad del video 
+
+
+		// player.loadVideoById({videoId:url,suggestedQuality:"hd720"});
+		// cargar el video en hd
+		
+		
+		
+		player.playVideo();
+		// una vez cargado el video, lo reproducimos
+		// playVideo() es un metodo de la apideyoube
+
+	
+	}
+ 
+	next();
+	// ejecutamos la funciÃ³n next
+
+</script>
+
+<script src="https://www.youtube.com/iframe_api"></script>
+<!--
+la api de youtube se almacena en los servidores de youtube
+tenemos que descargarla DESDE Los servidores de youtube.
+-->
   <br>
      <p>Copia esta direccion y pegala en vlc segun el video</p>
      <p>medios>abrir ubicacion red> pegar el url >reproducir
