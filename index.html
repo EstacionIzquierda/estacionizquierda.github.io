@@ -34,7 +34,12 @@ content="https://github.com/sciostation/sciostation.github.io/blob/main/images/S
 <hr>
 <div class="w3-cell-row">
   <div class="w3-cell" style="width:30%">
-  
+  <b><script>
+var meses = new Array ("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
+var diasSemana = new Array("Domingo","Lunes","Martes","Miercoles","Jueves","Viernes","Sabado");
+var f=new Date();
+document.write(diasSemana[f.getDay()] + ", " + f.getDate() + " de " + meses[f.getMonth()] + " de " + f.getFullYear());
+</script></b>
   </div>
   <div class="w3-cell w3-container">
     <h3>Radio Station Science and Technology</h3>
