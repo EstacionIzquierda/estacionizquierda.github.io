@@ -29,17 +29,17 @@
 </url>
 <url>
   <loc>https://sciostation.github.io/natio.html</loc>
-  <lastmod>2022-10-11T23:48:47+00:00</lastmod>
-  <priority>0.64</priority>
+  <lastmod>2023-09-11T23:48:47+00:00</lastmod>
+  <priority>0.84</priority>
 </url>
 <url>
   <loc>https://sciostation.github.io/natiotv.html</loc>
-  <lastmod>2022-10-11T23:48:47+00:00</lastmod>
-  <priority>0.64</priority>
+  <lastmod>2023-09-11T23:48:47+00:00</lastmod>
+  <priority>0.84</priority>
 </url>
 <url>
   <loc>https://sciostation.github.io/saxum.html</loc>
-  <lastmod>2022-10-11T23:48:47+00:00</lastmod>
+  <lastmod>2023-09-11T23:48:47+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
@@ -47,6 +47,12 @@
   <lastmod>2022-10-11T23:48:47+00:00</lastmod>
   <priority>0.64</priority>
 </url>
+      <url>
+  <loc>https://sciostation.github.io/clasic.html</loc>
+  <lastmod>2023-09-11T23:48:47+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
 
 
 </urlset>
