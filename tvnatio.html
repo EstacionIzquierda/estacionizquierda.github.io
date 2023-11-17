@@ -29,6 +29,22 @@
       .row.content {height: auto;} 
     }
   </style>
+	 <script>
+    // el array de los videos
+let vids = ["https://s3-us-west-2.amazonaws.com/s.cdpn.io/605876/video-player-video.mp4","https://www.w3schools.com/html/mov_bbb.mp4"]
+// la longitud del array de los videos
+let leng = vids.length;
+// un numero utilizado para saber que video se está reproduciendo
+let n = 0;
+// utilizo el evento "ended" para saber si el video se ha acabado
+vid.addEventListener("ended",()=>{
+// si el video se ha acabado cambia el atributo src
+vid.setAttribute("src", vids[n%leng]);
+
+n++;
+}
+)
+  </script>
 </head>
 <body>
  <div class="container-fluid">
@@ -91,22 +107,7 @@ document.write(diasSemana[f.getDay()] + ", " + f.getDate() + " de " + meses[f.ge
 </script></b>.</h5>
       <h5><span class="label label-success">Tv</span></h5><br>
     
-  <script>
-    // el array de los videos
-let vids = ["https://s3-us-west-2.amazonaws.com/s.cdpn.io/605876/video-player-video.mp4","https://www.w3schools.com/html/mov_bbb.mp4"]
-// la longitud del array de los videos
-let leng = vids.length;
-// un numero utilizado para saber que video se está reproduciendo
-let n = 0;
-// utilizo el evento "ended" para saber si el video se ha acabado
-vid.addEventListener("ended",()=>{
-// si el video se ha acabado cambia el atributo src
-vid.setAttribute("src", vids[n%leng]);
-
-n++;
-}
-)
-  </script>
+ 
   <video id="vid" preload="true" autoplay="true" muted="muted" volume="0" controls width="300" height="168">
  <source src="https://www.w3schools.com/html/mov_bbb.mp4"  type="video/mp4">
 </video>
