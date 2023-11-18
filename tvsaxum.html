@@ -55,7 +55,7 @@ content="https://natio.neocities.org/radio/images/SaxumStation.png" />
       <ul class="nav nav-pills nav-stacked">
         <li class="active"><a href="saxum.html">Home</a></li>
         <li><a href="saxumtv.html">Saxum video Tv</a></li>
-        li><a href="tvsaxum.html">Saxum Station Tv</a></li>
+        <li><a href="tvsaxum.html">Saxum Station Tv</a></li>
         <li><a href="radiosaxum.html">radio Saxum Station</a></li>
       </ul><br>
       <div class="input-group">
@@ -83,16 +83,32 @@ document.write(diasSemana[f.getDay()] + ", " + f.getDate() + " de " + meses[f.ge
       <h5><span class="label label-danger">Natio</span> <span class="label label-primary">Saxum Station Tv</span></h5><br>
       <p>Saxum Station Rock Music.</p>
       
+<h5><span class="label label-success">Tv</span></h5><br>
+    
+ 
+  <video id="vid" preload="true" autoplay="true"  controls width="600" height="300">
+ <source src="https://ia801505.us.archive.org/9/items/natio-station-tv/natio%20%20station%20tv.mp4"  type="video/mp4">
+</video>
+    <script>
+    // el array de los videos
+let vids = ["https://ia804504.us.archive.org/35/items/el-problema-del-streaming-exceso-de-plataformas-g-426hf3v-169/EL%20PROBLEMA%20DEL%20STREAMING%20--%20Exceso%20de%20Plataformas_G426hfv19.mp4","https://ia902305.us.archive.org/34/items/videotime-cine-latino/Los%20Minions.mp4","https://ia801407.us.archive.org/9/items/stationnatio/stationnatio.mp4","https://ia903100.us.archive.org/30/items/Rambo1/Rambo.ogv"]
+// la longitud del array de los videos
+let leng = vids.length;
+// un numero utilizado para saber que video se está reproduciendo
+let n = 0;
+// utilizo el evento "ended" para saber si el video se ha acabado
+vid.addEventListener("ended",()=>{
+// si el video se ha acabado cambia el atributo src
+vid.setAttribute("src", vids[n%leng]);
 
-      <br>
-       <br>
-     <p>Copia esta direccion y pegala en vlc segun el video</p>
-     <p>medios>abrir ubicacion red> pegar el url >reproducir</p>
-      <textarea id="textArea">https://bit.ly/3rJWYTO</textarea>
-    <br>
-     <button onclick="copyToClipBoard()">Copy</button>
+n++;
+}
+)
+  </script>
 
-    <script src="js/copy.js"></script>
+
+
+        
       
       <br>
       
