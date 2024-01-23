@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Natio Station Tv</title>
+  <meta charset="utf-8">
+ <meta name="robots" content="index"/>	
+   <meta name="description" content=" Station natio tv, con programación cultural, músical y de actualidad">
+  <meta name="keywords" content="tv, station , natio, television, youtobe">
+  
+  <meta property="og:type" content="article" />
+<meta property="og:title" content="Natio Station Tv" />
+<meta property="og:url" content="https://sciostation.github.io/natiotv.html" />
+<meta property="og:image" 
+content="images/stationnation.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+    /* Set height of the grid so .sidenav can be 100% (adjust if needed) */
+    .row.content {height: 1500px}
+    
+    /* Set gray background color and 100% height */
+    .sidenav {
+      background-color: #f1f1f1;
+      height: 100%;
+    }
+    
+    /* Set black background color, white text and some padding */
+    footer {
+      background-color: #555;
+      color: white;
+      padding: 15px;
+    }
+    
+    /* On small screens, set height to 'auto' for sidenav and grid */
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 15px;
+      }
+      .row.content {height: auto;} 
+    }
+  </style>
+</head>
+<body>
+
+<div id="mi_video_player" style="clear:both; width:500px; height:281px; margin:0px; padding:0px;border:0px;"></div>
+	<!-- 
+	creamos un div para mostrar el reproductor de youtube 
+	lo bautizamos con id="mi_video_player"
+	definimos sus ancho y alto con width:500px; height:281px;
+	-->
+	
+	<div style="margin:0px; padding:0px;border:0px;">
+
+		<strong>titulo: </strong> <span id="cancion"></span>
+  	<strong>programa:</strong> <span id="autor"></span><br>
+	<!-- 
+	creamos dos span vacÃ­os para mostrar el intÃ©rpete y nombre de la canciÃ³n 
+	-->
+
+	
+
+    <script>
+
+
+var video_a_mostar = 0;
+// variable para almacenar el video a mostrar
+
+var situacion_del_video;
+// variable para almacenar la situacion del video
+// la situacion del video la proporciona la api de youtube
+// los valores posibles son:
+// 0 el video ha terminado
+// 1 el video se esta reproduciendo
+// 2 el video esta pausado
+// 3 el video esta almacenandose localmente
+// 4 el video esta listo para reproducirse
+// -1 el video no ha iniciado
+	
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *}
+//  creamos un array multidimensional con la playlist de los videos a reproducir
+// cada elemnto del array tiene:
+// ["interperete","nombre de la cancion","youtube video id"],
+// Ejemplo:
+// ["Amy Winehouse ","You Know I am No Good ","b-I2s5zRbHg"],
+// El youtube video id se extrae de la url del video
+// Ejemplo de url del video:
+// https://www.youtube.com/watch?v=b-I2s5zRbHg
+// el valor del parametro v es el youtube video id
+// En este caso: b-I2s5zRbHg
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *}
+
+
+
+	var playlist = 
+	[	
+["presentacion ","Natio Station tv ","Ok-5E28v9xo"],		
+["presentacion ","Natio Station tv ","MUVdMvlMQkg"],
+["presentacion ","Natio Station tv ","LJQuIbnH6XU"],		
+["presentacion ","ciudadano virtual natio states ","2EOxMR9cYXY"],
+["publicidad","festival new babylon","yjTHHugVDWU"],		
+["publicidad","tu mejor compra.","up8s20hIvJM"],
+["publicidad","saxum station  ","Ok-5E28v9xo"],
+["natio station","tu mejor vestido","EyxVlumGk2g"],						
+["publicidad","natio station ","FjtNokTfjnE"],		
+["presentacion ","Natio Station radio tv","Ok-5E28v9xo"],
+["publicidad","natio station","uTPp_ihqkX4"],
+["presentacion ","Natio Station radio tv","LJQuIbnH6XU"],
+["publicidad","natio station","uTPp_ihqkX4"],
+["natio station","7 Excelentes Técnicas de Manipulación","Wrgik_JE3t4"],				
+["micronacion","micronación natio states","MUVdMvlMQkg"],
+["programa","exito y finanzas","B2EAi7wstVw"],
+["programa","exito y finanzas","pAWG2VEneTg"],
+["presentacion","locutor virtual","BegSpMXnDxs"],
+["artes liberales ","curso de artes liberales severus snape","fjy5UC_NaGc"],		
+["educacion","resumen gramatica cursos de artes liberales","E_oYXRYF060"],		
+["educacion","gramatica artes liberales","sB7y60NesCQ"],
+["presentacion ","Natio Station tv tv","LJQuIbnH6XU"],
+["educacion","artes bellas y artes Menores","dr5eeHU8UKo"],		
+["tienda virtual","tu mejor compra ","ML75bzrZOis"],
+["educacion","artes mecanicas ","UuwfL_wpInw"],		
+["presentacion ","Natio Station tv tv","Ok-5E28v9xo"],	
+["natio","mi propia micronacion ","EayXKN91pTs"],
+["presentacion ","Natio Station tv tv","ZHvg5op6Vfk"],
+["publicidad","micro nacion nature","dqtnPHhWOzA"],
+["presentacion ","Natio Station radio tv","LJQuIbnH6XU"],
+["publicidad ","tu mejor compra","ML75bzrZOis"],
+["natio station","el mejor sistema sanitario del mundo","xWu9F73XYKo"],			
+["presentacion ","Natio Station tv tv","ZHvg5op6Vfk"],
+["presentacion ","Natio Station radio tv","LJQuIbnH6XU"],
+["youtobe","microfreesoft tu canal de youtobe","zeYzCOp8Dus"],
+["presentacion ","Natio Station radio tv","LJQuIbnH6XU"],
+["serie ","casados con hijos ","1f-bR0pkPHo"],			
+["presentacion ","Natio Station radio tv","LJQuIbnH6XU"],
+["pelicula ","el cuervo","DCxHyycjj0Y"],
+["presentacion ","Natio Station radio tv","LJQuIbnH6XU"],
+["pelicula ","el mundo esta loco loco película ","IGOCZ9kyUns"],		
+["presentacion ","Natio Station tv tv","ZHvg5op6Vfk"],
+["pelicula ","sin escape","FXpe_mH3vs8"],		
+["presentacion ","Natio Station tv tv","ZHvg5op6Vfk"],	
+["presentacion ","Natio Station tv tv","Jev3dq5dg50"],		
+["pelicula","Superhéroes","ujPcNoA5um4"],
+["presentacion ","Natio Station tv tv","ZHvg5op6Vfk"],
+["pelicula ","Juego de ladrones","0UX83pc6tCw"],		
+["noticais "," ¿Eres fanático político?  ","koYasCxuW1o"],
+["noticias "," La teoría de la estupidez humana  ","TxX6vguu2_E"],
+["presentacion ","Natio Station tv tv","ZHvg5op6Vfk"],		
+["noticias "," El principio de Hanlon ","lix2M0Lw2Ps"],
+["noticias ","Cómo ser inteligente","6lq4eQUYyxM"],		
+["presentacion ","Natio Station tv tv","ZHvg5op6Vfk"],		
+["cuba feliz"," Lagrimas Negras  ","tozhe0yTAqo"],
+["presentacion ","Natio Station tv tv","ZHvg5op6Vfk"],
+["musica","Che Guevara Comandante ","83KHLFKsbxQ"],		
+["musica","Hasta Siempre, Comandante","nNGZs53XYoY"],
+["presentacion ","Natio Station tv tv","ZHvg5op6Vfk"],
+["Eliades Ochoa","El Carretero ","ooo2k_4_m1Q"],		
+["presentacion ","Natio Station tv tv","ZHvg5op6Vfk"],			
+["Celina y Reutilio","Que Viva Chango","Y06C82oAz9o"],
+["presentacion ","Natio Station tv tv","ZHvg5op6Vfk"],
+["cuba","Un Monton de Estrella ","TCEETncgY-0"],
+["presentacion ","Natio Station tv tv","ZHvg5op6Vfk"],
+["Polo Montanez ","Un monton de Estrellas   ","dMmPQ_Wi_Hs"],			
+["Grupo Sabor Cubano","El Manicero  ","4jINEzP5K_s"],
+["natio station","Instituto Tavistock","j-mtK75act0"],						
+["presentacion ","Natio Station tv tv","ZHvg5op6Vfk"],			
+["Grupo PinarSon from Cuba","yolanda","cQhpDVxVPBw"],
+["presentacion ","Natio Station tv tv","ZHvg5op6Vfk"],
+["musica ","Donde estaras","V0n44Y1P2B8"],		
+["polo montañez","donde estaras ","kypImQ02s2g"],
+["presentacion ","Natio Station tv tv","ZHvg5op6Vfk"],	
+["TRIO PLAYOMAR","VALLENATOS EN GUITARRA","cUTSc-4X7FU"],
+["presentacion ","Natio Station tv tv","ZHvg5op6Vfk"],
+["YO CLAUDIO","Un toque de asesinato","1TKzCLn-kt0"],		
+["VALLENATO EN GUITARRa"," LA PATILLALERA","QakVfDSseEw"],
+["presentacion ","Natio Station tv tv","ZHvg5op6Vfk"],
+["merengue","Trío imperial","ZEyeQkY646U"],
+["musica","palomita morena","7sDHb7jn0yI"],
+["presentacion ","Natio Station tv tv","ZHvg5op6Vfk"],
+["documental ","ORIGIN","BLl0RTbVfZY"],
+["entrenamiento","Cómo dominar tu mente","im3vc2NzCVc"],
+["entrenamiento","La Clave para Ser más Fuerte MENTALMENTE","Ytyu-iwePJY"],
+["presentacion ","Natio Station tv tv","ZHvg5op6Vfk"],
+["educación ","resumen gramatica cursos de artes liberales","E_oYXRYF060"],		
+["filosofia","Escépticos y Dogmáticos ","8QWnxqCz6MQ"],	
+["noticia","Lo que esta pasando EN ISRAEL, LA BIBLIA ","4f4k8kIDcfM"]
+["De parche Mode","Hoja de indebida Julio César Turbay Quintero","W4RQuhBFLo8"],		
+["noticias","Jared Kushner - El Anticristo ya está aquí ","PRyNg79NYtE"],
+["noticias"," Explicando misterios del Edificio 666 Rockefeller Center ","bF-piPG4-2c"],		
+["presentacion ","Natio Station tv tv","ZHvg5op6Vfk"],
+["noticias","NO VIVAS PARA TRABAJAR TRABAJA PARA VIVIR","8pURjGJqMrM"],
+["Radio Saxum Station tv Rock Music ","Radio Saxum Station Rock Music tv","618xYPt6Wgg"],
+["noticias ","5 Estilos de Crianza y sus Efectos en la Vida ","ECCCFPfKZDs"],
+["noticais "," ¿Eres fanático político?  ","koYasCxuW1o"],
+["noticias ","EL EXTRAÑO MENSAJE","CdQhDmZYIdc"],
+["pelicula ","Las Voces  ","3rqfTKbgGVw"],
+["cursos ","Aprende Wing Chun desde cero  ","Npu6A42Uzw0"],		
+["presentacion ","Natio Station tv tv","ZHvg5op6Vfk"],
+["educacion ","curso de artes liberales severus snape  ","fjy5UC_NaGc"],		
+["ejercicio "," cómo ser más INTELIGENTE  ","OpM49NbKTP0"],
+["programa","Los TRES Chiflados ","br5grTgVSds"],		
+["manolo galvan ","manolo galvan hijo de ramera   ","xuqAjdDY4Ew"],
+["Domenico Modugno"," Mas Como Has Hecho ","ttbrzru2T0U"],
+["Radio Saxum Station tv Rock Music ","Radio Saxum Station Rock Music tv","618xYPt6Wgg"],
+["Iyeoka","Simply Falling","9Pes54J8PVw"],			
+["Indila"," Dernière Danse","K5KAc5CoCuk"],
+["presentacion ","Natio Station tv tv","ZHvg5op6Vfk"],
+["Florina","Va va vis","_TIPjyLFUBY"],
+["presentacion ","Natio Station tv tv","ZHvg5op6Vfk"],
+["Radio Saxum Station tv Rock Music ","Radio Saxum Station Rock Music tv","618xYPt6Wgg"],
+["Depeche Mode","Policy Of Truth","BNoIDn9K2D8"],
+["Depeche Mode","Enjoy The Silence","aGSKrC7dGcY"],	
+["Depeche Mode","Strangelove ","JIrm0dHbCDU"]
+["Depeche Mode","Just Can't Get Enough","ON8bfyAwL_8"],
+["Radio Saxum Station tv Rock Music ","Radio Saxum Station Rock Music tv","618xYPt6Wgg"],
+["The Outfield","for you love ","OP0bnO25ALg"],
+["Erasure ","A Little Respect ","pn_59fAbCZw"],
+["Erasure "," Lay All Your Love On Me ","x34icYC8zA0"],
+["Erasure ","Chains of Love  ","6J2OlIpQgF8"],
+["Erasure ","Sometimes ","S1a8QABKNo0"],
+["Erasure ","Take a Chance on Me ","L-d4J3YUQmU"],
+[" sin señal "," sin señal ","vHMiEhZnbeQ"],
+["sin señal ","SONIDO BLANCO,","19t_OfinDso&t"],
+["presentacion ","Natio Station tv tv","ZHvg5op6Vfk"],		
+["dibujos animados","LAS AVENTURAS DE TOM SAWYER ","W2jTEQHMigw"],		
+["los tres chifaldos","los tres chiflados","oDh5doyuyao"],
+["animados","He-Man y los Amos del Universo","_lxmsKSGGk4"],
+["natio station","Los Autos Locos  ","gNTol7swS00"]		
+["baile","salpique","wLM9wGIFbY"],		
+["La Familia Monster ","Herman elige un ganador ","tfNrB_sO3y8"],
+["Radio Saxum Station tv Rock Music ","Radio Saxum Station Rock Music tv","618xYPt6Wgg"],
+["presentacion ","Natio Station tv tv","ZHvg5op6Vfk"],	
+["dibujos animados","conde patula ","8h1-q9zus_k"],	
+["presentacion ","Natio Station tv tv","ZHvg5op6Vfk"],	
+["animados","Centella Capitulo 1","9lX0HwulzPM"],		
+["presentacion ","Natio Station tv tv","ZHvg5op6Vfk"],
+["Río Abajo","Tres huevitos","D6KgRvvsRio"],
+["noticias","Un día en la vida de un MINIMALISTA Vive mejor con menos ","YvTkRJVgJdk"],
+["presentacion ","Natio Station tv tv","ZHvg5op6Vfk"],	
+["Jose Pepe Mujica","El Valor de la Libertad ","WR0WBXXXwI0"],
+["presentacion ","Natio Station tv tv","ZHvg5op6Vfk"],		
+["Radio Saxum Station tv Rock Music ","Radio Saxum Station Rock Music tv","618xYPt6Wgg"],
+["Mi bella genio ","Mi bella genio ","lix2M0Lw2Ps"],
+["pelicula","soldado universal","fbGfva9lI8E"],
+["presentacion ","Natio Station radio tv","LJQuIbnH6XU"],
+["natio station"," animados ","SPWJTv4SfMM"],
+["pelicula ","Kickboxer","v5Lp93gdKg4"],
+];
+
+
+var total_videos = playlist.length - 1;
+//variable para almacenar cuantos videos tieene la playlist
+
+var player;
+// crea el player para los videos			
+
+	
+window.onYouTubeIframeAPIReady = function()
+// la api de youtube tiene sus propiedades, metodos y eventos propios
+// onYouTubeIframeAPIReady es un evento de la api de yoube
+// window.onYouTubeIframeAPIReady cuando la api de youtube estÃ© lista...
+{
+
+
+	player = new YT.Player('mi_video_player', 
+	// creamos un nuevo reproductor
+	// el video se mostrarÃ¡ en el div llamado'mi_video_player
+	{
+	
+		width: '500',
+		// el reproductor tendra un ancho de 500 pixeles
+		height: '281',
+		// el reproductor tendra un ancho de 281 pixeles
+							
+		playerVars: { 'autoplay': 1, 'controls': 0, 'disablekb':0, 'enablejsapi':1, 'iv_load_policy':3, 'rel':0, 'showinfo':0 },
+		// pasamos variables al reproductor 
+		// 'autoplay': 1 inicia la reproducciÃ²n del video automaticamente
+		// 'controls': 0 no muestra los controles del video (pausa, stop, next, volumen)
+		//  'disablekb':0  desactiva el teclado de la computadora para controlar el video
+		//  'enablejsapi':1  permite controlar el reproductor con javascript
+		//  'iv_load_policy':3 desactiva las horrendas video anotaciones
+		//  'rel':0 no muestra videos relacionados
+		// 'showinfo':0  oculta la informacion del video (titulo y autor)
+
+		
+		events: 
+		// creamos eventos para nuestro reproductor de videos
+		{
+			'onReady': el_reproductor_esta_listo,
+			// cuando el reproductor este listo, ejecutaremos la funcion el_reproductor_esta_listo
+
+			'onStateChange': el_reproductor_cambio_de_estado
+			// cuando el video cambie de estado, ejecutaremos la funcion el_reproductor_cambio_de_estado
+		}
+	});
+
+}
+
+
+function el_reproductor_esta_listo(event) 
+// definimos la funcion  el_reproductor_esta_listo
+// esta funcion se ejecutara cuando el reproductor este listo
+// event es una variable que pasa automaticamente la API de youtube
+{
+					
+	next();
+	// ejecutar la funcion next()
+
+}
+
+
+
+function el_reproductor_cambio_de_estado(event) 
+// definimos la funcion  el_reproductor_cambio_de_estado
+// esta funcion se ejecutara cuando el video cambie de estado
+// event es una variable que pasa automaticamente la API de youtube
+{
+
+	situacion_del_video =  event.data;
+	// cuando el video cambie de estado
+	// modificamos el valor de la variable situacion_del_video
+	
+	if (event.data == 0) 
+	// si el video termino de reproducirse
+	{
+		next();
+		// ejecutar la funcion next()
+		// mostraremos otro video con la funcion next()
+
+	}
+
+	if (event.data == -1) 
+	// si el video no ha iniciado
+	// todos los videos presentan la situaciÃ³n no iniciado
+	// algunos videos no habrÃ¡n iniciado, pero comenzarÃ¡n a transmitir datos
+	// algunos videos nunca iniciarÃ¡n
+	// si el video fue borrrado, nunca iniciarÃ¡
+	// si el video no  puede insertarse en el reproductor,  nunca iniciarÃ¡
+	// para evitar que el reproductor colapse por que el video fue borrado
+	// o por que se impide su reproducciÃ³n fuera de youtube
+	// creamos una funcion
+	{
+
+		timeout_mostrar_video = window.setTimeout(kill_timeout_video, 3000); 
+		// creamos una cuenta regresiva
+		// al finalizar la cuenta regresiva se ejecutarÃ¡ la funciÃ³n kill_timeout_video
+		// en 3 segundos se ejecutara la funcion kill_timeout_video
+
+	}
+	
+}
+		
+
+function kill_timeout_video() 
+// tras ejecutar una cuenta regresiva 
+// ejecutaremos la funcion kill_timeout_video() 
+	{
+
+		window.clearTimeout(timeout_mostrar_video);
+		// destruye la cuenta regresiva
+	
+		if(situacion_del_video == -1)
+		// si la situacion del video sigue siendo -1 tras  3 segundos...
+		// si el video no ha iniciado tras tres segundos...
+		// mostraremos otro video con la funcion next()
+		{
+		
+			next();
+			// ejecutar la funcion next()
+		
+		}
+
+	}
+
+	function next()
+	// creamos la funcion next
+	{
+		
+		reproducir();
+		// next ejecuta la funciÃ³n reproducir();
+	
+	}
+	
+
+	
+	function reproducir() 
+	// creamos la funciÃ³n  reproducir() 
+	{ 
+	
+		
+		video_a_mostrar_src = playlist[video_a_mostar][2];
+		// recuperarmo el yotube video id de nuestro array multidimensional
+		// video_a_mostrar_src almacenarÃ¡ el elemento 2 del  array que almacena los datos del video
+		// en este caso el elemento 2 es el youtube video id
+		// video_a_mostar  se refiere al elemento dentro del array que almacena la playlist
+		// video_a_mostar tiene un valor de 0 al inicio 
+		//  empezaremos con el elemento 0, el primero en el array que almacena la playlist
+		
+
+		document.getElementById('autor').innerHTML = playlist[video_a_mostar][0];
+		// de manera dinamica mostraremos el autor del video
+		// el autor del video lo mostrarmos en el span llamado autor 
+		// accedemos a los elementos del array multidimensional
+		// recuperamos el elemento 0 del  array que almacena los datos del video
+		// en este caso el autor
+		// video_a_mostar  se refiere al elemento dentro del array que almacena la playlist
+		// video_a_mostar tiene un valor de 0 al inicio 
+		//  empezaremos con el elemento 0, el primero en el array que almacena la playlist
+
+
+
+		document.getElementById('cancion').innerHTML = playlist[video_a_mostar][1];
+		// de manera dinamica mostraremos el titulo del video
+		// el titulo del video lo mostrarmos en el span llamado cancion 
+		// accedemos a los elementos del array multidimensional
+		// recuperamos el elemento 1 del  array que almacena los datos del video
+		// en este caso el titulo del video
+		// video_a_mostar  se refiere al elemento dentro del array que almacena la playlist
+		// video_a_mostar tiene un valor de 0 al inicio 
+		//  empezaremos con el elemento 0, el primero en el array que almacena la playlist
+
+
+
+		mostrar_video(video_a_mostrar_src);
+		//ejecutamos la funciÃ³n mostrar_video con la variable video_a_mostrar_src
+		// video_a_mostrar_src almacena el yotube video id
+	
+		if(video_a_mostar < total_videos)
+		// verificamos que el video a mostrar no sea el ultimo de la playlist
+		// verificamos que el video a mostrar no este al final del array
+		{
+			video_a_mostar += 1;
+			// si no es el ultimo, el siguiente serÃ¡ el siguiente en la lista
+		}
+		else
+		{
+			video_a_mostar = 0;
+			// si es el ultimo video
+			// comenzaremos a mostrar videos nuevamente
+			// desde el principio
+		}
+	
+	}
+
+
+
+	
+	function mostrar_video(url)
+	// funcion para mostar el video
+	{
+	
+		
+		 player.loadVideoById({videoId:url,suggestedQuality:"small"});
+		// cargar video en baja resolucion
+		// loadVideoById() es un metodo de la apideyoube
+		// videoId: es el youtube video id
+		// suggestedQuality: define la calidad del video 
+
+
+		// player.loadVideoById({videoId:url,suggestedQuality:"hd720"});
+		// cargar el video en hd
+		
+		
+		
+		player.playVideo();
+		// una vez cargado el video, lo reproducimos
+		// playVideo() es un metodo de la apideyoube
+
+	
+	}
+ 
+	next();
+	// ejecutamos la funciÃ³n next
+
+</script>
+
+<script src="https://www.youtube.com/iframe_api"></script>
+<!--
+la api de youtube se almacena en los servidores de youtube
+tenemos que descargarla DESDE Los servidores de youtube.
+-->
+
+</div>
+</div>
+	</div>
+<script src="https://www.youtube.com/iframe_api"></script>
+<!--
+la api de youtube se almacena en los servidores de youtube
+tenemos que descargarla DESDE Los servidores de youtube.
+-->
+      <hr>
+
+      
+<footer class="container-fluid">
+  <p>Natio Station Tv</p>
+</footer>
+
+</body>
+</html>
