@@ -1,0 +1,27 @@
+<html><head>
+<title>natio tv</title>
+  
+</head>
+<body>
+<video id="vid" preload="true" autoplay="true"  controls width="500" height="280">
+ <source src="https://ia600400.us.archive.org/4/items/chavo-8-hecho-con-clipchamp/chavo8%20%E2%80%90%20Hecho%20con%20Clipchamp.mp4"  type="video/mp4">
+</video>
+    <script>
+    // el array de los videos
+let vids = ["https://ia802309.us.archive.org/35/items/El-Chavo-Del-8-1971/001%20El%20Ropavejero.mp4","https://dn720307.ca.archive.org/0/items/El-Chavo-Del-8-1971/002%20El%20Peso.mp4","https://dn720307.ca.archive.org/0/items/El-Chavo-Del-8-1971/003%20La%20Fiesta%20De%20La%20Buena%20Vecindad.mp4","https://dn720307.ca.archive.org/0/items/El-Chavo-Del-8-1971/004%20Los%20Muebles%20De%20Don%20Ramon.mp4","https://ia802309.us.archive.org/35/items/El-Chavo-Del-8-1971/005%20Nuevas%20Vecinas%201%20-%20Gloria%20Llega%20A%20La%20Vecindad.mp4","https://dn720307.ca.archive.org/0/items/El-Chavo-Del-8-1971/006%20Nuevas%20Vecinas%202%20-%20Gloria%20Y%20Patty.mp4"]
+// la longitud del array de los videos
+let leng = vids.length;
+// un numero utilizado para saber que video se está reproduciendo
+let n = 0;
+// utilizo el evento "ended" para saber si el video se ha acabado
+vid.addEventListener("ended",()=>{
+// si el video se ha acabado cambia el atributo src
+vid.setAttribute("src", vids[n%leng]);
+
+n++;
+}
+)
+  </script>
+
+</body>
+</html>
