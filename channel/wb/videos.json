@@ -1,0 +1,31 @@
+{
+    "lunes": [
+        {
+            "hora": "8",
+            "titulo": "Video 1 Lunes",
+            "descripcion": "Descripción del video 1 para el lunes a las 8 AM",
+            "url": "video1_lunes.mp4"
+        },
+        {
+            "hora": "14",
+            "titulo": "Video 2 Lunes",
+            "descripcion": "Descripción del video 2 para el lunes a las 2 PM",
+            "url": "video2_lunes.mp4"
+        }
+    ],
+    "martes": [
+        {
+            "hora": "10",
+            "titulo": "Video 1 Martes",
+            "descripcion": "Descripción del video 1 para el martes a las 10 AM",
+            "url": "video1_martes.mp4"
+        },
+        {
+            "hora": "16",
+            "titulo": "Video 2 Martes",
+            "descripcion": "Descripción del video 2 para el martes a las 4 PM",
+            "url": "video2_martes.mp4"
+        }
+    ]
+    // Añade más días y videos según sea necesario
+}
