@@ -2,15 +2,15 @@
     "lunes": [
         {
             "hora": "8",
-            "titulo": "Video 1 Lunes",
-            "descripcion": "Descripción del video 1 para el lunes a las 8 AM",
-            "url": "video1_lunes.mp4"
+            "titulo": "Looney Tunes ",
+            "descripcion": "es una serie de dibujos animados de la compañía Warner Bros, que comenzó su transmisión oficialmente en 1930",
+            "url": "https://dn720409.ca.archive.org/0/items/warner-bros-1952x-30-bugs-sam-un-viaje-emocionante-hare-lift-cla-esp-eng-laser-d_202207/Warner%20Bros%201952x01%20%5BSilvestre%20e%20hijo%20Hippety%5D%20Quien%20es%20Gatito%20Quien%28Who%27s%20Kitten%20Who%29%5BCLA%2BENG%5D%5BDVD%2BSAT%20richardgomez-dsigual%5D%5Bgrupots%5D.mp4"
         },
         {
             "hora": "14",
-            "titulo": "Video 2 Lunes",
-            "descripcion": "Descripción del video 2 para el lunes a las 2 PM",
-            "url": "video2_lunes.mp4"
+            "titulo": "Looney Tunes",
+            "descripcion": "es una serie de dibujos animados de la compañía Warner Bros, que comenzó su transmisión oficialmente en 1930",
+            "url": "https://dn720409.ca.archive.org/0/items/warner-bros-1952x-30-bugs-sam-un-viaje-emocionante-hare-lift-cla-esp-eng-laser-d_202207/Warner%20Bros%201952x02%20%5BBugs%20Coyote%5D%20Operacion%20conejo%20%28Operation%20rabbit%29%20%5BCLA%2BLAT%2BENG%5D%5BDVD%2BVHS%20by%20kojikum-dsigual%5D%5BgrupoTS%5D.mp4"
         }
     ],
     "martes": [
