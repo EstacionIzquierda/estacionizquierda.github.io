@@ -1,1 +1,1 @@
-grupo de medios de comunicación 
+Scio Medios es una innovadora plataforma de comunicación que abarca radio, prensa y televisión, dedicándose a ofrecer contenido de alta calidad, informativo y entretenido para una audiencia diversa y global. Nuestra misión es informar, educar y conectar a las personas a través de diferentes medios de comunicación, utilizando tecnología avanzada y enfoques creativos para alcanzar a nuestros oyentes, lectores y espectadores.
